@@ -1,0 +1,53 @@
+1. What is Kubernetes?
+
+Definition (say this in interviews):
+Kubernetes is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications.
+
+In simple terms:
+It manages your containers so you don’t have to manually handle:
+
+deployment
+scaling
+networking
+failures
+
+2. Why Kubernetes? (Problem it Solves)
+
+Before Kubernetes:
+
+Manual deployment of containers
+No auto-healing
+Difficult scaling
+No centralized management
+
+Kubernetes provides:
+
+Automated deployment
+Self-healing
+Load balancing
+Scaling
+
+👉 One-liner for interview:
+“Kubernetes abstracts infrastructure and ensures applications run reliably at scale.”
+
+
+3. Kubernetes Architecture
+
+Control Plane (master)
+
+API Server: takes reqs from external world,like creating resources and stuff.It is an entry point to Kubernetes, in k8s All communication happens via REST API, theh api server Handles authentication + validation so basically API server is the gateway to the cluster
+
+Scheduler[api server decides the info and scheduler acts on that info]: Assigns pods or resources to nodes,
+Based on:CPU/memory,constraints, affinity rules
+
+Controller Manager: it maintains the desired state of the pod to ensure multiple controllers like Node controller, Replication controller are running 
+
+etcd: it is a key-value store and the entire kubernetes cluster information is stored as key-value pairs,it acts as a backup service, it is useful for restoring a cluster
+
+Worker Nodes (worker)[internal to kubernetes not exposed to others]
+
+Kubelet:Talks to API server and it ensures that the pods are always running
+
+Kube Proxy: helps in the loadbalancing as the containers need to have ip addresses[it generates the ip addresses and uses ip tables in the linux machine] for the load to get distributed, helps with the networking stuff
+
+Container Runtime: for the container inside the pod to run k8s has multiple container runtimes like dockershim,containerD,crio etc
