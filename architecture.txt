@@ -51,3 +51,30 @@ Kubelet:Talks to API server and it ensures that the pods are always running
 Kube Proxy: helps in the loadbalancing as the containers need to have ip addresses[it generates the ip addresses and uses ip tables in the linux machine] for the load to get distributed, helps with the networking stuff
 
 Container Runtime: for the container inside the pod to run k8s has multiple container runtimes like dockershim,containerD,crio etc
+
+4: why ingress?
+
+Ingress is required to manage external HTTP/HTTPS access to services in a centralized and efficient way, instead of exposing each service individually.
+
+🔹 The Problem Without Ingress
+
+If you don’t use Ingress:
+
+You expose services using:
+NodePort → limited & messy
+LoadBalancer → expensive (one per service)
+No centralized routing
+Hard to manage multiple services
+
+👉 Imagine 10 services = 10 load balancers 💸
+
+🔹 What Ingress Does
+
+Ingress acts like a smart entry point (API gateway) for your cluster.
+
+It allows you to:
+
+Route traffic based on URL paths or domains
+Use a single LoadBalancer for multiple services
+Handle SSL/TLS termination
+Enable advanced routing rules
